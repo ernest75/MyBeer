@@ -1,3 +1,8 @@
 <resources>
     <string name="app_name">MyBeer</string>
+    <string name="enter_your_food_here">Enter your food here</string>
+    <string name="reverse_order">Reverse order</string>
+    <string name="your_food">Your Food</string>
+    <string name="your_beers">Your beers</string>
+    <string name="find">Find</string>
 </resources>

@@ -46,13 +46,13 @@ public class Beer implements Serializable, Parcelable {
     private Integer ebc;
     @SerializedName("srm")
     @Expose
-    private Integer srm;
+    private Double srm;
     @SerializedName("ph")
     @Expose
     private Double ph;
     @SerializedName("attenuation_level")
     @Expose
-    private Integer attenuationLevel;
+    private Double attenuationLevel;
     @SerializedName("volume")
     @Expose
     private Volume volume;
@@ -104,9 +104,9 @@ public class Beer implements Serializable, Parcelable {
         this.targetFg = ((Integer) in.readValue((Integer.class.getClassLoader())));
         this.targetOg = ((Integer) in.readValue((Integer.class.getClassLoader())));
         this.ebc = ((Integer) in.readValue((Integer.class.getClassLoader())));
-        this.srm = ((Integer) in.readValue((Integer.class.getClassLoader())));
+        this.srm = ((Double) in.readValue((Integer.class.getClassLoader())));
         this.ph = ((Double) in.readValue((Double.class.getClassLoader())));
-        this.attenuationLevel = ((Integer) in.readValue((Integer.class.getClassLoader())));
+        this.attenuationLevel = ((Double) in.readValue((Integer.class.getClassLoader())));
         this.volume = ((Volume) in.readValue((Volume.class.getClassLoader())));
         this.boilVolume = ((BoilVolume) in.readValue((BoilVolume.class.getClassLoader())));
         this.method = ((Method) in.readValue((Method.class.getClassLoader())));
@@ -207,11 +207,11 @@ public class Beer implements Serializable, Parcelable {
         this.ebc = ebc;
     }
 
-    public Integer getSrm() {
+    public Double getSrm() {
         return srm;
     }
 
-    public void setSrm(Integer srm) {
+    public void setSrm(Double srm) {
         this.srm = srm;
     }
 
@@ -223,11 +223,11 @@ public class Beer implements Serializable, Parcelable {
         this.ph = ph;
     }
 
-    public Integer getAttenuationLevel() {
+    public Double getAttenuationLevel() {
         return attenuationLevel;
     }
 
-    public void setAttenuationLevel(Integer attenuationLevel) {
+    public void setAttenuationLevel(Double attenuationLevel) {
         this.attenuationLevel = attenuationLevel;
     }
 

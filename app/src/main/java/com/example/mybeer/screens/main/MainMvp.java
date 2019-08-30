@@ -10,21 +10,18 @@ public interface MainMvp {
 
     interface Model {
 
-
     }
 
     interface Presenter {
 
         void setView(MainMvp.View view);
 
-        void loadData();
-
-        void rxJavaUnsubscribe();
-
+        void onBeersForFoodAsked(String food);
 
     }
 
     interface View {
+        void onBeersForFoodRetrived();
 
-        }
+    }
 }

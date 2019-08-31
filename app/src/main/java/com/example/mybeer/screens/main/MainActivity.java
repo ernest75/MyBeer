@@ -3,14 +3,18 @@ package com.example.mybeer.screens.main;
 import android.content.Context;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
+import android.support.v7.widget.DefaultItemAnimator;
+import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.Toast;
 
 import com.example.mybeer.R;
+import com.example.mybeer.adapters.BeersAdapter;
 import com.example.mybeer.dagger.App;
-import com.example.mybeer.networking.apimodels.Beer;
+import com.example.mybeer.models.BeerModel;
+import com.example.mybeer.networking.apimodels.BeerApi;
 
 import java.util.List;
 
@@ -34,7 +38,7 @@ public class MainActivity extends AppCompatActivity implements MainMvp.View{
     @BindView(R.id.btnFind)
     Button btnFind;
 
-    private Call<List<Beer>> beerCall;
+    private Call<List<BeerApi>> beerCall;
 
     @Inject
     Context mContext;
@@ -42,6 +46,9 @@ public class MainActivity extends AppCompatActivity implements MainMvp.View{
     @Inject
     MainMvp.Presenter mMainPresenter;
 
+    BeersAdapter mBeersAdapter;
+
+    // beer name, tagline, description, image, and ABV (Alcohol By Volume, %).
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -79,6 +86,15 @@ public class MainActivity extends AppCompatActivity implements MainMvp.View{
     @Override
     public void showError(String error) {
 
+    }
+
+    @Override
+    public void showBeers(List<BeerModel> beerModels) {
+        mBeersAdapter = new BeersAdapter(beerModels,mContext);
+        recyclerView.setAdapter(mBeersAdapter);
+        recyclerView.setLayoutManager(new LinearLayoutManager(mContext));
+
+        recyclerView.setItemAnimator(new DefaultItemAnimator());
     }
 
 

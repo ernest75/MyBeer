@@ -5,11 +5,11 @@ import java.io.Serializable;
 import java.util.List;
 import android.os.Parcel;
 import android.os.Parcelable;
-import android.os.Parcelable.Creator;
+
 import com.google.gson.annotations.Expose;
 import com.google.gson.annotations.SerializedName;
 
-public class Beer implements Serializable, Parcelable {
+public class BeerApi implements Serializable, Parcelable {
 
     @SerializedName("id")
     @Expose
@@ -28,7 +28,7 @@ public class Beer implements Serializable, Parcelable {
     private String description;
     @SerializedName("image_url")
     @Expose
-    private Object imageUrl;
+    private String imageUrl;
     @SerializedName("abv")
     @Expose
     private Double abv;
@@ -74,31 +74,31 @@ public class Beer implements Serializable, Parcelable {
     @SerializedName("contributed_by")
     @Expose
     private String contributedBy;
-    public final static Parcelable.Creator<Beer> CREATOR = new Creator<Beer>() {
+    public final static Parcelable.Creator<BeerApi> CREATOR = new Creator<BeerApi>() {
 
 
         @SuppressWarnings({
             "unchecked"
         })
-        public Beer createFromParcel(Parcel in) {
-            return new Beer(in);
+        public BeerApi createFromParcel(Parcel in) {
+            return new BeerApi(in);
         }
 
-        public Beer[] newArray(int size) {
-            return (new Beer[size]);
+        public BeerApi[] newArray(int size) {
+            return (new BeerApi[size]);
         }
 
     }
     ;
     private final static long serialVersionUID = -4452764729921994257L;
 
-    protected Beer(Parcel in) {
+    protected BeerApi(Parcel in) {
         this.id = ((Integer) in.readValue((Integer.class.getClassLoader())));
         this.name = ((String) in.readValue((String.class.getClassLoader())));
         this.tagline = ((String) in.readValue((String.class.getClassLoader())));
         this.firstBrewed = ((String) in.readValue((String.class.getClassLoader())));
         this.description = ((String) in.readValue((String.class.getClassLoader())));
-        this.imageUrl = ((Object) in.readValue((Object.class.getClassLoader())));
+        this.imageUrl = ((String) in.readValue((Object.class.getClassLoader())));
         this.abv = ((Double) in.readValue((Double.class.getClassLoader())));
         this.ibu = ((Double) in.readValue((Double.class.getClassLoader())));
         this.targetFg = ((Double) in.readValue((Double.class.getClassLoader())));
@@ -116,7 +116,7 @@ public class Beer implements Serializable, Parcelable {
         this.contributedBy = ((String) in.readValue((String.class.getClassLoader())));
     }
 
-    public Beer() {
+    public BeerApi() {
     }
 
     public Integer getId() {
@@ -159,11 +159,11 @@ public class Beer implements Serializable, Parcelable {
         this.description = description;
     }
 
-    public Object getImageUrl() {
+    public String getImageUrl() {
         return imageUrl;
     }
 
-    public void setImageUrl(Object imageUrl) {
+    public void setImageUrl(String imageUrl) {
         this.imageUrl = imageUrl;
     }
 

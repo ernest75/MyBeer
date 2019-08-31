@@ -1,6 +1,6 @@
 package com.example.mybeer.screens.main;
 
-import android.content.Intent;
+import com.example.mybeer.models.BeerModel;
 
 import java.util.List;
 
@@ -9,7 +9,7 @@ import io.reactivex.Observable;
 public interface MainMvp {
 
     interface Model {
-        void getBeersFromApi(String food);
+        Observable<List<BeerModel>> getBeersFromNetwork(String food);
     }
 
     interface Presenter {
@@ -25,6 +25,8 @@ public interface MainMvp {
         void onBeersForFoodRetrived();
 
         void showError(String error);
+
+        void showBeers(List<BeerModel> beerModels);
 
 
     }

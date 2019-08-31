@@ -34,16 +34,16 @@ public class Beer implements Serializable, Parcelable {
     private Double abv;
     @SerializedName("ibu")
     @Expose
-    private Integer ibu;
+    private Double ibu;
     @SerializedName("target_fg")
     @Expose
-    private Integer targetFg;
+    private Double targetFg;
     @SerializedName("target_og")
     @Expose
-    private Integer targetOg;
+    private Double targetOg;
     @SerializedName("ebc")
     @Expose
-    private Integer ebc;
+    private Double ebc;
     @SerializedName("srm")
     @Expose
     private Double srm;
@@ -100,13 +100,13 @@ public class Beer implements Serializable, Parcelable {
         this.description = ((String) in.readValue((String.class.getClassLoader())));
         this.imageUrl = ((Object) in.readValue((Object.class.getClassLoader())));
         this.abv = ((Double) in.readValue((Double.class.getClassLoader())));
-        this.ibu = ((Integer) in.readValue((Integer.class.getClassLoader())));
-        this.targetFg = ((Integer) in.readValue((Integer.class.getClassLoader())));
-        this.targetOg = ((Integer) in.readValue((Integer.class.getClassLoader())));
-        this.ebc = ((Integer) in.readValue((Integer.class.getClassLoader())));
-        this.srm = ((Double) in.readValue((Integer.class.getClassLoader())));
+        this.ibu = ((Double) in.readValue((Double.class.getClassLoader())));
+        this.targetFg = ((Double) in.readValue((Double.class.getClassLoader())));
+        this.targetOg = ((Double) in.readValue((Double.class.getClassLoader())));
+        this.ebc = ((Double) in.readValue((Double.class.getClassLoader())));
+        this.srm = ((Double) in.readValue((Double.class.getClassLoader())));
         this.ph = ((Double) in.readValue((Double.class.getClassLoader())));
-        this.attenuationLevel = ((Double) in.readValue((Integer.class.getClassLoader())));
+        this.attenuationLevel = ((Double) in.readValue((Double.class.getClassLoader())));
         this.volume = ((Volume) in.readValue((Volume.class.getClassLoader())));
         this.boilVolume = ((BoilVolume) in.readValue((BoilVolume.class.getClassLoader())));
         this.method = ((Method) in.readValue((Method.class.getClassLoader())));
@@ -175,35 +175,35 @@ public class Beer implements Serializable, Parcelable {
         this.abv = abv;
     }
 
-    public Integer getIbu() {
+    public Double getIbu() {
         return ibu;
     }
 
-    public void setIbu(Integer ibu) {
+    public void setIbu(Double ibu) {
         this.ibu = ibu;
     }
 
-    public Integer getTargetFg() {
+    public Double getTargetFg() {
         return targetFg;
     }
 
-    public void setTargetFg(Integer targetFg) {
+    public void setTargetFg(Double targetFg) {
         this.targetFg = targetFg;
     }
 
-    public Integer getTargetOg() {
+    public Double getTargetOg() {
         return targetOg;
     }
 
-    public void setTargetOg(Integer targetOg) {
+    public void setTargetOg(Double targetOg) {
         this.targetOg = targetOg;
     }
 
-    public Integer getEbc() {
+    public Double getEbc() {
         return ebc;
     }
 
-    public void setEbc(Integer ebc) {
+    public void setEbc(Double ebc) {
         this.ebc = ebc;
     }
 

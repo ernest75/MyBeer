@@ -13,7 +13,7 @@ public class Temp_ implements Serializable, Parcelable
 
     @SerializedName("value")
     @Expose
-    private Integer value;
+    private Double value;
     @SerializedName("unit")
     @Expose
     private String unit;
@@ -36,18 +36,18 @@ public class Temp_ implements Serializable, Parcelable
     private final static long serialVersionUID = 6411343571380353705L;
 
     protected Temp_(Parcel in) {
-        this.value = ((Integer) in.readValue((Integer.class.getClassLoader())));
+        this.value = ((Double) in.readValue((Integer.class.getClassLoader())));
         this.unit = ((String) in.readValue((String.class.getClassLoader())));
     }
 
     public Temp_() {
     }
 
-    public Integer getValue() {
+    public Double getValue() {
         return value;
     }
 
-    public void setValue(Integer value) {
+    public void setValue(Double value) {
         this.value = value;
     }
 

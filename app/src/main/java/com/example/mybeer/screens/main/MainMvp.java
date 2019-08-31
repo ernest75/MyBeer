@@ -9,7 +9,7 @@ import io.reactivex.Observable;
 public interface MainMvp {
 
     interface Model {
-
+        void getBeersFromApi(String food);
     }
 
     interface Presenter {
@@ -21,7 +21,11 @@ public interface MainMvp {
     }
 
     interface View {
+
         void onBeersForFoodRetrived();
+
+        void showError(String error);
+
 
     }
 }

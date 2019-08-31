@@ -13,7 +13,7 @@ public class BoilVolume implements Serializable, Parcelable
 
     @SerializedName("value")
     @Expose
-    private Integer value;
+    private Double value;
     @SerializedName("unit")
     @Expose
     private String unit;
@@ -36,18 +36,18 @@ public class BoilVolume implements Serializable, Parcelable
     private final static long serialVersionUID = 8663043190789357548L;
 
     protected BoilVolume(Parcel in) {
-        this.value = ((Integer) in.readValue((Integer.class.getClassLoader())));
+        this.value = ((Double) in.readValue((Integer.class.getClassLoader())));
         this.unit = ((String) in.readValue((String.class.getClassLoader())));
     }
 
     public BoilVolume() {
     }
 
-    public Integer getValue() {
+    public Double getValue() {
         return value;
     }
 
-    public void setValue(Integer value) {
+    public void setValue(Double value) {
         this.value = value;
     }
 

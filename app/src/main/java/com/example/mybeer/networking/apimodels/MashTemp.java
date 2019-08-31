@@ -16,7 +16,7 @@ public class MashTemp implements Serializable, Parcelable
     private Temp temp;
     @SerializedName("duration")
     @Expose
-    private Integer duration;
+    private Double duration;
     public final static Parcelable.Creator<MashTemp> CREATOR = new Creator<MashTemp>() {
 
 
@@ -37,7 +37,7 @@ public class MashTemp implements Serializable, Parcelable
 
     protected MashTemp(Parcel in) {
         this.temp = ((Temp) in.readValue((Temp.class.getClassLoader())));
-        this.duration = ((Integer) in.readValue((Integer.class.getClassLoader())));
+        this.duration = ((Double) in.readValue((Integer.class.getClassLoader())));
     }
 
     public MashTemp() {
@@ -51,11 +51,11 @@ public class MashTemp implements Serializable, Parcelable
         this.temp = temp;
     }
 
-    public Integer getDuration() {
+    public Double getDuration() {
         return duration;
     }
 
-    public void setDuration(Integer duration) {
+    public void setDuration(Double duration) {
         this.duration = duration;
     }
 

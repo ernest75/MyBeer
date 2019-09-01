@@ -7,6 +7,7 @@ import com.example.mybeer.R;
 import com.example.mybeer.models.BeerModel;
 
 import java.util.ArrayList;
+import java.util.Collections;
 import java.util.List;
 
 import io.reactivex.android.schedulers.AndroidSchedulers;
@@ -74,6 +75,11 @@ public class MainPresenter implements MainMvp.Presenter {
                                         }
                                     }));
                         }else {
+                            Collections.sort(beerModels);
+                            for (BeerModel beerModel: beerModels) {
+                                Log.e(TAG,beerModel.getAbv() + "");
+
+                            }
                             mMainView.showBeers(beerModels);
                         }
 
@@ -93,6 +99,12 @@ public class MainPresenter implements MainMvp.Presenter {
 
         }
 
-
+    @Override
+    public void reverseBeersOrder(List<BeerModel> beerModelList) {
+        Collections.sort(beerModelList, Collections.reverseOrder());
+        mMainView.showBeers(beerModelList);
     }
+
+
+}
 

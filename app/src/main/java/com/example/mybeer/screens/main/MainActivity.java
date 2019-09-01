@@ -25,7 +25,7 @@ import butterknife.ButterKnife;
 import butterknife.OnClick;
 import retrofit2.Call;
 
-public class MainActivity extends AppCompatActivity implements MainMvp.View{
+public class MainActivity extends AppCompatActivity implements MainMvp.View {
 
     private static final String TAG = MainActivity.class.getSimpleName();
 
@@ -71,9 +71,9 @@ public class MainActivity extends AppCompatActivity implements MainMvp.View{
     @OnClick(R.id.btnFind)
     public void onClick() {
         String food = etFood.getText().toString();
-        if(food.isEmpty()){
-            Toast.makeText(mContext,"Type a food please",Toast.LENGTH_LONG).show();
-        }else {
+        if (food.isEmpty()) {
+            Toast.makeText(mContext, "Type a food please", Toast.LENGTH_LONG).show();
+        } else {
             recyclerView.setAdapter(null);
             mMainPresenter.onBeersForFoodAsked(food);
         }
@@ -86,12 +86,12 @@ public class MainActivity extends AppCompatActivity implements MainMvp.View{
 
     @Override
     public void showError(String error) {
-        Toast.makeText(mContext,error,Toast.LENGTH_LONG).show();
+        Toast.makeText(mContext, error, Toast.LENGTH_LONG).show();
     }
 
     @Override
     public void showBeers(List<BeerModel> beerModels) {
-        mBeersAdapter = new BeersAdapter(beerModels,mContext);
+        mBeersAdapter = new BeersAdapter(beerModels, mContext);
         recyclerView.setAdapter(mBeersAdapter);
         recyclerView.setLayoutManager(new LinearLayoutManager(mContext));
 
@@ -99,4 +99,8 @@ public class MainActivity extends AppCompatActivity implements MainMvp.View{
     }
 
 
+    @OnClick(R.id.btnReverse)
+    public void onClickButtonReverse() {
+        mMainPresenter.reverseBeersOrder(mBeersAdapter.getBeerModelList());
+    }
 }

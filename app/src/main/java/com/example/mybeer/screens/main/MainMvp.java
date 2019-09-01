@@ -24,6 +24,7 @@ public interface MainMvp {
 
         void onBeersForFoodAsked(String food);
 
+        void reverseBeersOrder(List<BeerModel> beerModelList);
     }
 
     interface View {

@@ -1,6 +1,8 @@
 package com.example.mybeer.models;
 
-public class BeerModel {
+import android.support.annotation.NonNull;
+
+public class BeerModel implements Comparable<BeerModel> {
 
     public BeerModel() {
     }
@@ -61,5 +63,11 @@ public class BeerModel {
 
     public void setAbv(Double abv) {
         this.abv = abv;
+    }
+
+    @Override
+    public int compareTo(@NonNull BeerModel beerModel) {
+        return (this.abv < beerModel.getAbv() ? -1 :
+                (this.abv.equals(beerModel.getAbv()) ? 0 : 1));
     }
 }

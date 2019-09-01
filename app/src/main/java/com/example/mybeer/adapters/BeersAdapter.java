@@ -32,6 +32,10 @@ public class BeersAdapter extends RecyclerView.Adapter<BeersAdapter.ViewHolder> 
         this.mContext = context;
     }
 
+    public List<BeerModel> getBeerModelList() {
+        return mBeerModelList;
+    }
+
     @NonNull
     @Override
     public ViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int position) {
@@ -87,7 +91,6 @@ public class BeersAdapter extends RecyclerView.Adapter<BeersAdapter.ViewHolder> 
             ButterKnife.bind(this, itemView);
 
         }
-
 
     }
 }

@@ -74,6 +74,7 @@ public class MainActivity extends AppCompatActivity implements MainMvp.View{
         if(food.isEmpty()){
             Toast.makeText(mContext,"Type a food please",Toast.LENGTH_LONG).show();
         }else {
+            recyclerView.setAdapter(null);
             mMainPresenter.onBeersForFoodAsked(food);
         }
     }
@@ -85,7 +86,7 @@ public class MainActivity extends AppCompatActivity implements MainMvp.View{
 
     @Override
     public void showError(String error) {
-
+        Toast.makeText(mContext,error,Toast.LENGTH_LONG).show();
     }
 
     @Override

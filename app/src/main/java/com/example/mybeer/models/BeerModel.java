@@ -5,6 +5,14 @@ public class BeerModel {
     public BeerModel() {
     }
 
+    public BeerModel(String name, String pictureUrl, String tagline, String description, Double abv) {
+        this.name = name;
+        this.pictureUrl = pictureUrl;
+        this.tagline = tagline;
+        this.description = description;
+        this.abv = abv;
+    }
+
     public String name;
 
     public String pictureUrl;

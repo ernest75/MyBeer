@@ -5,4 +5,5 @@
     <string name="your_food">Your Food</string>
     <string name="your_beers">Your beers</string>
     <string name="find">Find</string>
+    <string name="no_beers">No beers found for this food sorry.</string>
 </resources>

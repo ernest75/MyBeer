@@ -21,8 +21,7 @@ public class MainPresenter implements MainMvp.Presenter {
     private Context mContext;
     private  MainMvp.Model mMainModel;
     private MainMvp.View mMainView;
-
-    List<BeerModel> mBeerModelList= new ArrayList<>();
+    private boolean mNormalOrder = true;
 
     private CompositeDisposable compositeDisposable = new CompositeDisposable();
 
@@ -45,9 +44,7 @@ public class MainPresenter implements MainMvp.Presenter {
                 .subscribeWith(new DisposableObserver<List<BeerModel>>() {
                     @Override
                     public void onNext(List<BeerModel> beerModels) {
-                        // mBeerModelList = beerModels;
                         if (beerModels.isEmpty()){
-                            Log.e(TAG,"BEERMDEL LIST IS EMPTY");
                             //go to the net
                             compositeDisposable.add(mMainModel.getBeersFromNetwork(food)
                                     .subscribeOn(Schedulers.io())
@@ -55,13 +52,11 @@ public class MainPresenter implements MainMvp.Presenter {
                                     .subscribeWith(new DisposableObserver<List<BeerModel>>() {
                                         @Override
                                         public void onNext(List<BeerModel> beerModels) {
-                                           // mBeerModelList = beerModels;
                                             if (beerModels.isEmpty()){
                                                 mMainView.showError(mContext.getString(R.string.no_beers));
                                             }else{
                                                 mMainModel.insertToDb(beerModels,food);
                                             }
-                                            Log.e(TAG,mBeerModelList.size() + "");
                                         }
 
                                         @Override
@@ -76,10 +71,6 @@ public class MainPresenter implements MainMvp.Presenter {
                                     }));
                         }else {
                             Collections.sort(beerModels);
-                            for (BeerModel beerModel: beerModels) {
-                                Log.e(TAG,beerModel.getAbv() + "");
-
-                            }
                             mMainView.showBeers(beerModels);
                         }
 
@@ -101,7 +92,13 @@ public class MainPresenter implements MainMvp.Presenter {
 
     @Override
     public void reverseBeersOrder(List<BeerModel> beerModelList) {
-        Collections.sort(beerModelList, Collections.reverseOrder());
+        if(mNormalOrder){
+            Collections.sort(beerModelList, Collections.reverseOrder());
+            mNormalOrder = false;
+        } else {
+            Collections.sort(beerModelList);
+            mNormalOrder = true;
+        }
         mMainView.showBeers(beerModelList);
     }
 

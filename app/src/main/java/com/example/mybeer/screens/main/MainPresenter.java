@@ -37,7 +37,7 @@ public class MainPresenter implements MainMvp.Presenter {
 
     @Override
     public void onBeersForFoodAsked(final String food) {
-
+        mMainView.showProgressbar();
         compositeDisposable.add(mMainModel.getBeersForFoodFromDb(food)
                 .subscribeOn(Schedulers.io())
                 .observeOn(AndroidSchedulers.mainThread())
@@ -53,6 +53,7 @@ public class MainPresenter implements MainMvp.Presenter {
                                         @Override
                                         public void onNext(List<BeerModel> beerModels) {
                                             if (beerModels.isEmpty()){
+                                                mMainView.hideProgressbar();
                                                 mMainView.showError(mContext.getString(R.string.no_beers));
                                             }else{
                                                 mMainModel.insertToDb(beerModels,food);
@@ -71,6 +72,7 @@ public class MainPresenter implements MainMvp.Presenter {
                                     }));
                         }else {
                             Collections.sort(beerModels);
+                            mMainView.hideProgressbar();
                             mMainView.showBeers(beerModels);
                         }
 
@@ -78,7 +80,7 @@ public class MainPresenter implements MainMvp.Presenter {
 
                     @Override
                     public void onError(Throwable e) {
-
+                        mMainView.showError(e.getMessage());
                     }
 
                     @Override

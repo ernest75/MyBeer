@@ -11,6 +11,7 @@ import io.reactivex.disposables.Disposable;
 public interface MainMvp {
 
     interface Model {
+
         Observable<List<BeerModel>> getBeersFromNetwork(String food);
 
         Observable<List<BeerModel>> getBeersForFoodFromDb(String food);
@@ -29,7 +30,9 @@ public interface MainMvp {
 
     interface View {
 
-        void onBeersForFoodRetrived();
+        void showProgressbar();
+
+        void hideProgressbar();
 
         void showError(String error);
 

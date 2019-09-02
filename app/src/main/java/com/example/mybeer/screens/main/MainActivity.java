@@ -6,8 +6,10 @@ import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.DefaultItemAnimator;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
+import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.ProgressBar;
 import android.widget.Toast;
 
 import com.example.mybeer.R;
@@ -38,6 +40,8 @@ public class MainActivity extends AppCompatActivity implements MainMvp.View {
     Button btnReverse;
     @BindView(R.id.btnFind)
     Button btnFind;
+    @BindView(R.id.progressBar)
+    ProgressBar progressBar;
 
     private Call<List<BeerApi>> beerCall;
 
@@ -80,8 +84,18 @@ public class MainActivity extends AppCompatActivity implements MainMvp.View {
         }
     }
 
+
     @Override
-    public void onBeersForFoodRetrived() {
+    public void showProgressbar() {
+
+        progressBar.setVisibility(View.VISIBLE);
+
+    }
+
+    @Override
+    public void hideProgressbar() {
+
+        progressBar.setVisibility(View.GONE);
 
     }
 
@@ -103,7 +117,6 @@ public class MainActivity extends AppCompatActivity implements MainMvp.View {
     public void onClickButtonReverse() {
         mMainPresenter.reverseBeersOrder(mBeersAdapter.getBeerModelList());
     }
-
 
 
 }

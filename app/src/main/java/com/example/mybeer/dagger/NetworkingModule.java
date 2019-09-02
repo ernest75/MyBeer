@@ -8,7 +8,7 @@ import retrofit2.Retrofit;
 import retrofit2.adapter.rxjava2.RxJava2CallAdapterFactory;
 import retrofit2.converter.gson.GsonConverterFactory;
 
-import static com.example.mybeer.constants.Constants.BASE_URL_PUNK_API;
+import static com.example.mybeer.constants.Utils.BASE_URL_PUNK_API;
 
 @Module
 public class NetworkingModule {

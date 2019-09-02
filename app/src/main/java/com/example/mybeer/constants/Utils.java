@@ -1,6 +1,9 @@
 package com.example.mybeer.constants;
 
-public class Constants {
+import android.app.Activity;
+import android.view.inputmethod.InputMethodManager;
+
+public class Utils {
 
     public static final String BASE_URL_PUNK_API = "https://api.punkapi.com/v2/";
 
@@ -16,4 +19,12 @@ public class Constants {
 
 
     public static final String DB_BEERS = "beersDb";
+
+    public static void hideSoftKeyboard(Activity activity) {
+        InputMethodManager inputMethodManager =
+                (InputMethodManager) activity.getSystemService(
+                        Activity.INPUT_METHOD_SERVICE);
+        inputMethodManager.hideSoftInputFromWindow(
+                activity.getCurrentFocus().getWindowToken(), 0);
+    }
 }

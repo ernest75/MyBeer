@@ -4,9 +4,9 @@ import android.arch.persistence.room.ColumnInfo;
 import android.arch.persistence.room.Entity;
 import android.arch.persistence.room.PrimaryKey;
 
-import com.example.mybeer.constants.Constants;
+import com.example.mybeer.constants.Utils;
 
-@Entity(tableName = Constants.TABLE_BEER_WITH_FOOD)
+@Entity(tableName = Utils.TABLE_BEER_WITH_FOOD)
 public class BeerEntity {
 
     public BeerEntity(String beerName, String beerPicture, String tagline, String description, Double abv, String food) {
@@ -18,26 +18,26 @@ public class BeerEntity {
         this.food = food;
     }
 
-    @ColumnInfo(name=Constants.BEER_ID)
+    @ColumnInfo(name= Utils.BEER_ID)
     @PrimaryKey(autoGenerate =true)
     private long id;
 
-    @ColumnInfo(name=Constants.BEER_NAME)
+    @ColumnInfo(name= Utils.BEER_NAME)
     private String beerName;
 
-    @ColumnInfo(name=Constants.BEER_PICTURE)
+    @ColumnInfo(name= Utils.BEER_PICTURE)
     private String beerPicture;
 
-    @ColumnInfo(name=Constants.BEER_TAGLINE)
+    @ColumnInfo(name= Utils.BEER_TAGLINE)
     private String tagline;
 
-    @ColumnInfo(name=Constants.BEER_DESCRIPTION)
+    @ColumnInfo(name= Utils.BEER_DESCRIPTION)
     private String description;
 
-    @ColumnInfo(name=Constants.BEER_ABV)
+    @ColumnInfo(name= Utils.BEER_ABV)
     private Double abv;
 
-    @ColumnInfo(name=Constants.BEER_FOOD)
+    @ColumnInfo(name= Utils.BEER_FOOD)
     private String food;
 
     public long getId() {

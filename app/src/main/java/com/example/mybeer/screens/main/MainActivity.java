@@ -12,6 +12,7 @@ import android.widget.Toast;
 
 import com.example.mybeer.R;
 import com.example.mybeer.adapters.BeersAdapter;
+import com.example.mybeer.constants.Utils;
 import com.example.mybeer.dagger.App;
 import com.example.mybeer.models.BeerModel;
 import com.example.mybeer.networking.apimodels.BeerApi;
@@ -48,8 +49,6 @@ public class MainActivity extends AppCompatActivity implements MainMvp.View {
 
     BeersAdapter mBeersAdapter;
 
-    // beer name, tagline, description, image, and ABV (Alcohol By Volume, %).
-
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -76,6 +75,8 @@ public class MainActivity extends AppCompatActivity implements MainMvp.View {
         } else {
             recyclerView.setAdapter(null);
             mMainPresenter.onBeersForFoodAsked(food);
+            etFood.clearFocus();
+            Utils.hideSoftKeyboard(this);
         }
     }
 
@@ -94,7 +95,6 @@ public class MainActivity extends AppCompatActivity implements MainMvp.View {
         mBeersAdapter = new BeersAdapter(beerModels, mContext);
         recyclerView.setAdapter(mBeersAdapter);
         recyclerView.setLayoutManager(new LinearLayoutManager(mContext));
-
         recyclerView.setItemAnimator(new DefaultItemAnimator());
     }
 
@@ -103,4 +103,7 @@ public class MainActivity extends AppCompatActivity implements MainMvp.View {
     public void onClickButtonReverse() {
         mMainPresenter.reverseBeersOrder(mBeersAdapter.getBeerModelList());
     }
+
+
+
 }

@@ -4,7 +4,7 @@ import android.app.Application;
 import android.arch.persistence.room.Room;
 import android.content.Context;
 
-import com.example.mybeer.constants.Constants;
+import com.example.mybeer.constants.Utils;
 import com.example.mybeer.networking.PunkApiService;
 import com.example.mybeer.repository.BeersRepo;
 import com.example.mybeer.roomDb.BeerDAO;
@@ -46,7 +46,7 @@ public class ApplicationModule {
     @Singleton
     @Provides
     public BeersDB provideBeersDatabase(Context context){
-        return Room.databaseBuilder(context,BeersDB.class, Constants.DB_BEERS).build();
+        return Room.databaseBuilder(context,BeersDB.class, Utils.DB_BEERS).build();
     }
 
     @Singleton

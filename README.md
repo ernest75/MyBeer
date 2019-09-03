@@ -4,9 +4,9 @@ For the project I used the following frameworks :
 
 Dagger2 for DI
 
-Retrofit for REST, I find so convinent his call adapters methods to convert json responses and the way he can integrate with RxJAva, makes life easier
+Retrofit for REST, I find so convinent his call adapters methods to convert json responses and the way it can integrate with RxJAva, makes life easier
 
-RxJava2 for reactive
+RxJava2 for reactive,
 
 Glide for image loading
 

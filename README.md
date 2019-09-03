@@ -16,5 +16,4 @@ Room for SqliteDb I used Room because it reduces the boilerplate code of SQlite,
 
 I also implemented the Mvp patern to have a clear separation of concerns between components, keep the code cleaner and to try to follow the SOLID principles from Uncle's Bob.
 
-
 _ _PS: Please be aware that I did the project while working 8 hour shift so I didn't have much time to spend on the layouts design, or making a Clean Architecture approach.  

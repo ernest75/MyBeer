@@ -2,6 +2,8 @@ package com.example.mybeer.dagger;
 
 import com.example.mybeer.networking.PunkApiService;
 
+import javax.inject.Singleton;
+
 import dagger.Module;
 import dagger.Provides;
 import retrofit2.Retrofit;
@@ -13,6 +15,7 @@ import static com.example.mybeer.constants.Utils.BASE_URL_PUNK_API;
 @Module
 public class NetworkingModule {
 
+    @Singleton
     @Provides
     Retrofit getRetrofit(String baseUrl) {
         return new Retrofit.Builder()

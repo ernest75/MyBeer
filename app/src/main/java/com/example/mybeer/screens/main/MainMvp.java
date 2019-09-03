@@ -17,6 +17,8 @@ public interface MainMvp {
         Observable<List<BeerModel>> getBeersForFoodFromDb(String food);
 
         void insertToDb(List<BeerModel> beerModels, String food);
+
+        void clearRxStreams();
     }
 
     interface Presenter {
@@ -26,6 +28,8 @@ public interface MainMvp {
         void onBeersForFoodAsked(String food);
 
         void reverseBeersOrder(List<BeerModel> beerModelList);
+
+        void clearRxStreams();
     }
 
     interface View {

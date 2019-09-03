@@ -20,19 +20,12 @@ public class MainModel implements MainMvp.Model {
 
     private PunkApiService mPunkApiService;
 
-    private Call<List<BeerApi>> beerCall;
-
-    private static final String TAG = MainModel.class.getSimpleName();
-
     private BeersRepo mBeersRepo;
 
     public MainModel(PunkApiService mPunkApiService, BeersRepo mBeersRepo) {
         this.mPunkApiService = mPunkApiService;
         this.mBeersRepo = mBeersRepo;
     }
-
-
-
 
     @Override
     public Observable<List<BeerModel>> getBeersFromNetwork(String food) {
@@ -61,6 +54,11 @@ public class MainModel implements MainMvp.Model {
     @Override
     public void insertToDb(List<BeerModel> beerModels, String food) {
         mBeersRepo.insertToDb(convertBeerModelToBeerEntity(beerModels, food));
+    }
+
+    @Override
+    public void clearRxStreams() {
+        mBeersRepo.clearStreams();
     }
 
     private List<BeerEntity> convertBeerModelToBeerEntity(List<BeerModel> beerModels, String food) {

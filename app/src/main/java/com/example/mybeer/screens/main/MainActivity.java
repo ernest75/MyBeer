@@ -33,15 +33,15 @@ public class MainActivity extends AppCompatActivity implements MainMvp.View {
     private static final String TAG = MainActivity.class.getSimpleName();
 
     @BindView(R.id.etFood)
-    EditText etFood;
+    EditText mEtFood;
     @BindView(R.id.recyclerView)
-    RecyclerView recyclerView;
+    RecyclerView mRecyclerView;
     @BindView(R.id.btnReverse)
-    Button btnReverse;
+    Button mBtnReverse;
     @BindView(R.id.btnFind)
-    Button btnFind;
+    Button mBtnFind;
     @BindView(R.id.progressBar)
-    ProgressBar progressBar;
+    ProgressBar mProgressBar;
 
     private Call<List<BeerApi>> beerCall;
 
@@ -62,40 +62,39 @@ public class MainActivity extends AppCompatActivity implements MainMvp.View {
         ((App) getApplication()).getApplicationComponent().inject(this);
         mMainPresenter.setView(this);
 
-
     }
 
     @Override
     protected void onDestroy() {
         super.onDestroy();
+        mMainPresenter.clearRxStreams();
         mMainPresenter.setView(null);
     }
 
     @OnClick(R.id.btnFind)
     public void onClick() {
-        String food = etFood.getText().toString();
+        String food = mEtFood.getText().toString();
         if (food.isEmpty()) {
-            Toast.makeText(mContext, "Type a food please", Toast.LENGTH_LONG).show();
+            Toast.makeText(mContext, "Type a food please", Toast.LENGTH_SHORT).show();
         } else {
-            recyclerView.setAdapter(null);
+            mRecyclerView.setAdapter(null);
             mMainPresenter.onBeersForFoodAsked(food);
-            etFood.clearFocus();
-            Utils.hideSoftKeyboard(this);
+            mEtFood.clearFocus();
+            Utils.hideSoftKeyboard(mContext, mEtFood);
         }
     }
-
 
     @Override
     public void showProgressbar() {
 
-        progressBar.setVisibility(View.VISIBLE);
+        mProgressBar.setVisibility(View.VISIBLE);
 
     }
 
     @Override
     public void hideProgressbar() {
 
-        progressBar.setVisibility(View.GONE);
+        mProgressBar.setVisibility(View.GONE);
 
     }
 
@@ -107,9 +106,9 @@ public class MainActivity extends AppCompatActivity implements MainMvp.View {
     @Override
     public void showBeers(List<BeerModel> beerModels) {
         mBeersAdapter = new BeersAdapter(beerModels, mContext);
-        recyclerView.setAdapter(mBeersAdapter);
-        recyclerView.setLayoutManager(new LinearLayoutManager(mContext));
-        recyclerView.setItemAnimator(new DefaultItemAnimator());
+        mRecyclerView.setAdapter(mBeersAdapter);
+        mRecyclerView.setLayoutManager(new LinearLayoutManager(mContext));
+        mRecyclerView.setItemAnimator(new DefaultItemAnimator());
     }
 
 

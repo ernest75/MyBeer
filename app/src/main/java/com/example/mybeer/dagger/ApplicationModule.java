@@ -40,7 +40,7 @@ public class ApplicationModule {
 
     @Provides
     MainMvp.Model provideModel(PunkApiService punkApiService, BeerDAO beerDAO){
-        return new MainModel(punkApiService,new BeersRepo(punkApiService,beerDAO));
+        return new MainModel(punkApiService,new BeersRepo(beerDAO));
     }
 
     @Singleton

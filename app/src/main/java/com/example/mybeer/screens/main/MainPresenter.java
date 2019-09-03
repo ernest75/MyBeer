@@ -104,6 +104,13 @@ public class MainPresenter implements MainMvp.Presenter {
         mMainView.showBeers(beerModelList);
     }
 
+    @Override
+    public void clearRxStreams() {
+        mMainModel.clearRxStreams();
+        compositeDisposable.clear();
+
+    }
+
 
 }
 

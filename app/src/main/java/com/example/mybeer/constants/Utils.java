@@ -1,6 +1,8 @@
 package com.example.mybeer.constants;
 
 import android.app.Activity;
+import android.content.Context;
+import android.view.View;
 import android.view.inputmethod.InputMethodManager;
 
 public class Utils {
@@ -20,11 +22,11 @@ public class Utils {
 
     public static final String DB_BEERS = "beersDb";
 
-    public static void hideSoftKeyboard(Activity activity) {
+    public static void hideSoftKeyboard(Context context, View view) {
         InputMethodManager inputMethodManager =
-                (InputMethodManager) activity.getSystemService(
+                (InputMethodManager) context.getSystemService(
                         Activity.INPUT_METHOD_SERVICE);
         inputMethodManager.hideSoftInputFromWindow(
-                activity.getCurrentFocus().getWindowToken(), 0);
+                view.getWindowToken(), 0);
     }
 }

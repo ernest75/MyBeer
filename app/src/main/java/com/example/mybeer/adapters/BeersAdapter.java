@@ -46,10 +46,10 @@ public class BeersAdapter extends RecyclerView.Adapter<BeersAdapter.ViewHolder> 
     @Override
     public void onBindViewHolder(@NonNull ViewHolder viewHolder, int position) {
         final BeerModel beerModel = mBeerModelList.get(position);
-        viewHolder.tvBeerName.setText(beerModel.name);
-        viewHolder.tvAbv.setText(beerModel.abv +"%");
-        viewHolder.tvDescription.setText(beerModel.description);
-        viewHolder.tvTagline.setText(beerModel.tagline);
+        viewHolder.mTvBeerName.setText(beerModel.name);
+        viewHolder.mTvAbv.setText(beerModel.abv +"%");
+        viewHolder.mTvDescription.setText(beerModel.description);
+        viewHolder.mTvTagline.setText(beerModel.tagline);
 
         final RequestOptions options = new RequestOptions()
                 .centerCrop()
@@ -60,7 +60,7 @@ public class BeersAdapter extends RecyclerView.Adapter<BeersAdapter.ViewHolder> 
         Glide.with(mContext)
                 .load(beerModel.pictureUrl)
                 .apply(options)
-                .into(viewHolder.ivBeerPicture);
+                .into(viewHolder.mIvBeerPicture);
 
     }
 
@@ -72,19 +72,19 @@ public class BeersAdapter extends RecyclerView.Adapter<BeersAdapter.ViewHolder> 
     public class ViewHolder extends RecyclerView.ViewHolder {
 
         @BindView(R.id.ivBeerPicture)
-        ImageView ivBeerPicture;
+        ImageView mIvBeerPicture;
         
         @BindView(R.id.tvBeerName)
-        TextView tvBeerName;
+        TextView mTvBeerName;
         
         @BindView(R.id.tvAbv)
-        TextView tvAbv;
+        TextView mTvAbv;
         
         @BindView(R.id.tvTagline)
-        TextView tvTagline;
+        TextView mTvTagline;
         
         @BindView(R.id.tvDescription)
-        TextView tvDescription;
+        TextView mTvDescription;
 
         public ViewHolder(@NonNull View itemView) {
             super(itemView);

@@ -11,8 +11,6 @@ import retrofit2.http.Query;
 
 public interface PunkApiService {
 
-    //https://api.punkapi.com/v2/beers?food=all
-
     @GET("beers")
     Observable<List<BeerApi>> getBeersForFood(@Query("food") String food);
 

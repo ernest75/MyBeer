@@ -29,13 +29,10 @@ public class BeersRepo {
     private static final String TAG = BeersRepo.class.getSimpleName();
     private CompositeDisposable compositeDisposable = new CompositeDisposable();
 
-    private PunkApiService mPunkApiService;
     private BeerDAO mBeerDAO;
 
-
     @Inject
-    public BeersRepo(PunkApiService mPunkApiService, BeerDAO mBeerDAO) {
-        this.mPunkApiService = mPunkApiService;
+    public BeersRepo(BeerDAO mBeerDAO) {
         this.mBeerDAO = mBeerDAO;
     }
 
@@ -66,5 +63,9 @@ public class BeersRepo {
     public Observable<List<BeerEntity>> getBeersFromDb(String food) {
          return Observable.fromPublisher(mBeerDAO.getBeersForFood(food));
 
+    }
+
+    public void clearStreams() {
+        compositeDisposable.clear();
     }
 }
